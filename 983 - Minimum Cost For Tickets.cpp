@@ -17,16 +17,16 @@ public:
     int dp(int x, vector<int>& costs){
         if(x>365)
             return 0;
-        if(memo[x-1] != -1)
-            return memo[x-1];
+        if(memo[x - 1] != -1)
+            return memo[x -1 ];
         if(day_set.find(x) == day_set.end()){
-            memo[x-1] = dp(x+1, costs);
-            return memo[x-1];
+            memo[x - 1] = dp(x + 1, costs);
+            return memo[x - 1];
         }
-        memo[x-1] = min(dp(x+1, costs) + costs[0],
-                      dp(x+7, costs) + costs[1],
-                      dp(x+30, costs) + costs[2]);
-        return memo[x-1];
+        memo[x - 1] = min(dp(x + 1, costs) + costs[0],
+                      dp(x + 7, costs) + costs[1],
+                      dp(x + 30, costs) + costs[2]);
+        return memo[x - 1];
         
     }
     int mincostTickets(vector<int>& days, vector<int>& costs) {
